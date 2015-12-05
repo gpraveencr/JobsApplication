@@ -17,9 +17,15 @@
 	 
 	<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
 	<link href="${bootstrapCss}" rel="stylesheet" /> 
+	<spring:url value="/resources/core/css/appcss.css" var="appCss" />
+	<link href="${appCss}" rel="stylesheet" /> 
 	
 	<spring:url value="/resources/core/js/jquery.1.10.2.min.js" var="jqueryJs" />
 	<script src="${jqueryJs}"></script>
+	<spring:url value="/resources/core/js/bootstrap.min.js" var="bootStrapJs" />
+	<script src="${bootStrapJs}"></script>
+	<spring:url value="/resources/core/js/appscript.js" var="appJs" />
+	<script src="${appJs}"></script>
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -41,101 +47,13 @@
             <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
         </ul> -->
 </div> 
-<div class="jumbotron">
-    <div class="container">
-        <ul class="alphabet">
-            <li ng-repeat="char in alphabet">
-                <span ng-click="filterByAlphabet(char)">{{char}}</span>
-            </li>
-        </ul>
-        <ul class="genres">
-            <li ng-repeat="genre in genres">
-                <span ng-click="filterByGenre(genre)">{{genre}}</span>
-            </li>
-        </ul>
+<div class="jumbotron" id="titles"> 
+
 </div>
 <div class="container">
 
       
 </div>
-<script>
-	jQuery(document).ready(function($) {
-
-		$("#search-form").submit(function(event) {
-
-			// Disble the search button
-			enableSearchButton(false);
-
-			// Prevent the form from submitting via the browser.
-			event.preventDefault();
-
-			searchViaAjax();
-
-		});
-		
-		function distinctTitles() { 
-			$.ajax({
-				type : "GET",
-				contentType : "application/json",
-				url : "http://localhost:8080/JobsLookupService/jobs/titles",
-				data : JSON.stringify(search),
-				dataType : 'json',
-				timeout : 100000,
-				success : function(data) {
-					console.log("SUCCESS: ", data);
-					display(data);
-				},
-				error : function(e) {
-					console.log("ERROR: ", e);
-					display(e);
-				},
-				done : function(e) {
-					console.log("DONE");
-					enableSearchButton(true);
-				}
-			}); 
-		}
-
-	});
-
-	function searchViaAjax() {
-
-		var search = {}
-		search["title"] = $("#keywords").val();
-		/* search["email"] = $("#email").val(); */
-
-		$.ajax({
-			type : "GET",
-			contentType : "application/json",
-			url : "http://localhost:8080/JobsLookupService/jobs/title?title=",
-			data : JSON.stringify(search),
-			dataType : 'json',
-			timeout : 100000,
-			success : function(data) {
-				console.log("SUCCESS: ", data);
-				display(data);
-			},
-			error : function(e) {
-				console.log("ERROR: ", e);
-				display(e);
-			},
-			done : function(e) {
-				console.log("DONE");
-				enableSearchButton(true);
-			}
-		}); 
-	}
-
-	function enableSearchButton(flag) {
-		$("#btn-search").prop("disabled", flag);
-	}
-
-	function display(data) {
-		var json = "<h4>Ajax Response</h4><pre>"
-				+ JSON.stringify(data, null, 4) + "</pre>";
-		$('#feedback').html(json);
-	}
-</script>	
 
 </body>
 </html>
