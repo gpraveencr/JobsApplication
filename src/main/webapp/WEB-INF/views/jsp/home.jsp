@@ -19,6 +19,8 @@
 	<link href="${bootstrapCss}" rel="stylesheet" /> 
 	<spring:url value="/resources/core/css/appcss.css" var="appCss" />
 	<link href="${appCss}" rel="stylesheet" /> 
+	<spring:url value="/resources/core/css/font-awesome.css" var="fontCss" />
+	<link href="${fontCss}" rel="stylesheet" /> 
 	
 	<spring:url value="/resources/core/js/jquery.1.10.2.min.js" var="jqueryJs" />
 	<script src="${jqueryJs}"></script>
@@ -36,11 +38,22 @@
         </div>
         <ul class="nav navbar-nav">
             <li data-match-route="/$"><a href="/JobsApplicationWeb/">Home</a></li>
-            <li data-match-route="/add"><a href="/add">Add</a></li>
-        </ul>
+            <li data-match-route="/add"><a href="/JobsApplicationWeb/">Add</a></li>
+        </ul> 
+		<div class="col-sm-3 col-md-6 pull-center">
+		<form class="navbar-form" role="search" id="search-form">
+			<div class="input-group col-md-12">
+				<input type="text" class="form-control" placeholder="Search" name="search-title" id="search-title">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				</div>
+			</div>
+		</form>
+		</div>
+
         <ul class="nav navbar-nav pull-right">
-            <li data-match-route="/login"><a href="/login">Login</a></li>
-            <li data-match-route="/signup"><a href="/signup">Sign up</a></li>
+            <li data-match-route="/login"><a href="/JobsApplicationWeb/">Login</a></li>
+            <li data-match-route="/signup"><a href="/JobsApplicationWeb/">Sign up</a></li>
         </ul>
         <!-- <ul class="nav navbar-nav pull-right">
             <li class="navbar-text" ng-bind="currentUser.email"></li>
@@ -52,6 +65,7 @@
 </div>
 <div class="container">
 
+	<div id="search-results"></div>
       
 </div>
 
