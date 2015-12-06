@@ -35,7 +35,7 @@ function searchForm() {
 
 	var search = {}
 	search["search-title"] = $("#search-title").val();
-	search["search-zip"] = $("#search-zip").val(); 
+	search["search-zip"] = $("#search-zip").val();  
 	searchFormAjaxRequest(search["search-title"]);
 }
 

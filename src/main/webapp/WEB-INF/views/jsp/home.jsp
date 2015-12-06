@@ -42,8 +42,13 @@
         </ul> 
 		<div class="col-sm-3 col-md-6 pull-center">
 		<form class="navbar-form" role="search" id="search-form">
-			<div class="input-group col-md-12">
-				<input type="text" class="form-control" placeholder="Search" name="search-title" id="search-title">
+			<div class="input-group col-md-8">
+				<input type="text" class="form-control" placeholder="Keywords" name="search-title" id="search-title">
+			</div>
+			<div class="input-group col-md-2">
+				<input type="text" class="form-control" placeholder="Zipcode" name="search-zip" id="search-zip"> 
+			</div>
+			<div class="input-group">
 				<div class="input-group-btn">
 					<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 				</div>
